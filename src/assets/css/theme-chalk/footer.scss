@@ -1,0 +1,9 @@
+@import "mixins/mixins.scss";
+@import "common/var.scss";
+
+@include block(footer){
+  padding: $--footer-padding;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  flex-grow: 1;
+}

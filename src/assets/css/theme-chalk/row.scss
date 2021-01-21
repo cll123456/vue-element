@@ -1,0 +1,34 @@
+// 对于下面的scss,我们可以定义一些 公共的变量来做以后项目优化的修改
+
+@import './mixins/mixins.scss';
+@import './mixins/utils.scss';
+
+@include block(row){
+    box-sizing: border-box;
+    position: relative;
+    // 清除浮动
+    @include util-clear-fix();
+  
+    // &--flex{
+      @include modifier(flex){
+        display: flex;
+        
+        @include util-choose-pseudo-element((before,after)){
+          display: none;
+        }
+    }
+  }
+  
+  $justifyContentMap: (start: flex-start, end: flex-end, center: center, space-around: space-around, space-between: space-between);
+  @each $key, $value in $justifyContentMap{
+    .#{$flex-justify}-#{$key}{
+      justify-content: $value;
+    }
+  }
+  
+  $alignItemMap: (top: flex-start, middle: center, bottom: flex-end);
+  @each $key, $value in $alignItemMap{
+    .#{$flex-align}-#{$key}{
+      align-items: $value;
+    }
+  }

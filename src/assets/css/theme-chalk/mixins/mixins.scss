@@ -1,0 +1,41 @@
+// 关于BEM的混合定义
+@import './config.scss';
+// 项目中的所有命名方法都是以 el-xxx来命名的，所以可以写一个混入来代替，传入对应参数即可
+// BEM中的block的混入定义
+@mixin block($block) {
+  $current-selector: $name-space + '-' + $block;
+    @at-root{
+      .#{$current-selector}{
+        @content;
+      }
+    }
+}
+
+//   &--flex 对于这个来说，flex 是bem的m(modifier) 我们也可以写一个混合，因为修饰可以有多个修饰
+@mixin modifier($modifier) {
+  $selector: &;
+  $fullname: '';
+  // y由于可能存在此种情况 &--flex,&--float这种情况，所以我们的modifier是一个lists
+  // 判断$modifier是否为一个list
+  @each $item in $modifier {
+    $fullname: $fullname + $selector + $line-modifier + $item + ',';
+  }
+  @at-root{
+    #{$fullname}{
+      @content;
+    }
+  }
+}
+
+// 当需要使用某个条件作为 类名命名的时候
+@mixin when($c){
+  $selector: &;
+  $fullname: $selector + '.' + $condition + '-' + $c;
+  @at-root {
+    #{$fullname}{
+      @content;
+    }
+  }
+}
+
+

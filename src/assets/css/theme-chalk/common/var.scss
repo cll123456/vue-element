@@ -1,0 +1,176 @@
+// 断点变量
+// sm	≥768px 响应式栅格数或者栅格属性对象
+$--sm: 768px !default;
+// md	≥992px 响应式栅格数或者栅格属性对象
+$--md: 992px !default;
+// lg	≥1200px 响应式栅格数或者栅格属性对象
+$--lg: 1200px !default;
+// xl	≥1920px 响应式栅格数或者栅格属性对象
+$--xl: 1920px !default;
+
+// container布局的变量
+// 头部组件的padding
+$--header-padding: 0 20px !default;
+
+// footer组件的padding
+$--footer-padding: 0 20px !default;
+
+// main组件的padding
+$--main-padding: 0 20px !default;
+
+/**  色彩相关的变量
+------------------------------------------
+ */
+
+// 主色调
+$--primary-color: #409eff !default;
+// 白色色调
+$--white-color: #ffffff !default;
+// 黑色色调
+$--black-color: #000000 !default;
+// 主调 辅色调1
+$--primary-color-light1: mix($--white-color,$--primary-color, 10%) !default; // #53a8ff
+// 主调 辅色调2
+$--primary-color-light2: mix($--white-color, $--primary-color, 20%) !default; // #66b1ff
+// 主调 辅色调3
+$--primary-color-light3: mix($--white-color, $--primary-color, 30%) !default; // #79bbff
+// 主调 辅色调4
+$--primary-color-light4: mix($--white-color, $--primary-color, 40%) !default; // #8cc5ff
+// 主调 辅色调5
+$--primary-color-light5: mix($--white-color, $--primary-color, 50%) !default; // #a0cfff
+// 主调 辅色调6
+$--primary-color-light6: mix($--white-color, $--primary-color, 60%) !default; // #b3d8ff
+// 主调 辅色调7
+$--primary-color-light7: mix($--white-color, $--primary-color, 70%) !default; // #c6e2ff
+// 主调 辅色调8
+$--primary-color-light8: mix($--white-color, $--primary-color, 80%) !default; // #d9ecff
+// 主调 辅色调9
+$--primary-color-light9: mix($--white-color, $--primary-color, 90%) !default; // #ecf5ff
+
+// 辅色调 主要有success warning danger info
+
+// 成功色调
+$--success-color: #67c23a !default;
+// 成功辅色调1
+$--success-color-light: mix($--white-color, $--success-color, 50%) !default; // #b3e19d
+// 成功辅色调2
+$--success-color-lighter: mix($--white-color, $--success-color, 60%) !default; // #c2e7b0
+
+// 警告色调
+$--warning-color: #e6a23c !default;
+// 警告辅色调1
+$--warning-color-light: mix($--white-color, $--warning-color, 50%) !default; // #f3d19e
+// 警告辅色调2
+$--warning-color-lighter: mix($--white-color, $--warning-color, 60%) !default; // #f5dab1
+
+// 危险色调
+$--danger-color: #f56c6c !default;
+// 危险辅色调1
+$--danger-color-light: mix($--white-color, $--danger-color, 50%) !default; // #fab6b6
+// 危险辅色调2
+$--danger-color-lighter: mix($--white-color, $--danger-color, 60%) !default; // #fbc4c4
+
+// 信息色调
+$--info-color: #909399 !default;
+// 信息辅色调1
+$--info-color-light: mix($--white-color, $--info-color, 50%) !default; // #c8c9cc
+// 信息辅色调2
+$--info-color-lighter: mix($--white-color, $--info-color, 60%) !default; // #d3d4d6
+
+// 中性色
+// 主要文字的颜色
+$--font-color-main: #303133 !default;
+// 常规文字
+$--font-color-base: #606266 !default;
+// 次要文字
+$--font-color-sub: #909399 !default;
+// 占位文字
+$--font-color-space: #C0C4CC !default;
+
+// 边框相关的颜色
+// 一级边框颜色
+$--border-color-first: #dcdfe6 !default;
+// 二级边框颜色
+$--border-color-second: #e4e7ed !default;
+// 三级边框颜色
+$--border-color-third: #ebeef5 !default;
+// 四级边框颜色
+$--border-color-other: #f2f6fc !default;
+
+/**    字体相关
+-------------------------------------------------------
+ */
+// 主标题
+$--title-font-size-extra-large: 20px !default;
+// 标题
+$--title-font-size-large: 18px !default;
+// 小标题
+$--title-font-size-medium: 16px !default;
+// 正文
+$--title-font-size-base: 14px !default;
+// 正文（小）
+$--title-font-size-base-small: 13px !default;
+// 辅助文字
+$--title-font-size-extra-small: 12px !default;
+// 默认按钮的大小
+$--title-font-weight: 500 !default;
+
+
+/**   边框相关
+--------------------------------------------------------------
+ */
+// 边框， 提供一个实线边框和虚线边框
+// 实线边框
+$--border-line-solid: 1px solid $--black-color !default;
+// 虚线边框
+$--border-line-dashed: 2px dashed $--black-color !default;
+
+// 边框圆角 提供无圆角， 小圆角， 大圆角三个选项
+// 无圆角
+$--border-radius-none: 0 !default;
+// 小圆角
+$--border-radius-small: 2px !default;
+// 大圆角
+$--border-radius-large: 4px !default;
+
+// 阴影提供两种， 一个是基础阴影， 一个是浅阴影
+// 基础阴影
+$--box-shadow-base:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+
+// 浅阴影
+$--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+
+
+/**     button相关的变量
+---------------------------------------------------------------
+ */
+// 默认button的白色背景
+$--button-default-background-color: $--white-color !default;
+// 默认button的边框样式
+$--button-default-border: 1px solid $--border-color-first !default;;
+// 默认button的圆角
+$--button-default-radius: $--border-radius-large !default;
+// 默认button的padding
+$--button-default-padding: 12px 20px !default;
+// 默认按钮的color
+$--button-default-color: $--font-color-base !default;
+// 默认按钮的font-weight
+$--button-default-font-weight: $--title-font-weight !default;
+// 默认button的大小
+$--button-default-font-size: $--title-font-size-base !default;
+$--button-default-hover-color: $--primary-color !default;
+$--button-hover-border-color: $--primary-color-light7 !default;
+$--button-default-hover-background-color: $--primary-color-light9 !default;
+// 中等按钮
+$--button-medium-padding : 10px 20px !default;
+$--button-medium-font-size: $--title-font-size-base !default;
+$--button-medium-border-radius: $--border-radius-large !default;
+// 小型按钮
+$--button-small-padding : 9px 15px !default;
+$--button-small-font-size: $--title-font-size-extra-small !default;
+$--button-small-border-radius: #{$--border-radius-large - 1px} !default;
+// 迷你按钮
+$--button-mini-padding : 7px 15px !default;
+$--button-mini-font-size: $--title-font-size-extra-small !default;
+$--button-mini-border-radius: #{$--border-radius-large - 1px} !default;

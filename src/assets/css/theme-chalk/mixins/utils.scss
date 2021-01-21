@@ -1,0 +1,48 @@
+// 对于清楚浮动来说，可能会有多个地方用到，可以写一个工具混合
+@mixin util-clear-fix() {
+  $selector: &;
+  @at-root{
+    #{$selector}::before,
+    #{$selector}::after{
+      content: '';
+      display: block;
+    }
+
+    #{$selector}::after{
+      clear: both;
+    }
+  }
+}
+// 选中伪元素的混合
+@mixin util-choose-pseudo-element($element) {
+  $selector: &;
+  $key-modifier: '::';
+  $fullname: '';
+  @each $item in $element {
+    $fullname: $fullname + $selector + $key-modifier + $item + ',';
+  }
+  @at-root{
+    #{$fullname}{
+      @content;
+    }
+  }
+}
+
+// 鼠标不可以复制的工具混合
+@mixin util-no-select($value){
+  user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  -webkit-user-select: none;
+}
+
+
+// 相对于父级绝对定位的混合
+@mixin util-position($top, $right, $left, $bottom){
+  position: absolute;
+  top: $top;
+  right: $right;
+  left: $left;
+  bottom: $bottom;
+  content: '';
+}

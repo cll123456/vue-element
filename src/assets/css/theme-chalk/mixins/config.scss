@@ -1,0 +1,14 @@
+// .el-row， el 是elment的前缀，可以修改为其他的浅醉
+$name-space: 'el';
+// $--flex z中的 -- 其实是一个专有的修饰符，也许未来会变成 __  或者 其他的，所以定义出来
+$line-modifier: '--';
+
+// 对于flex布局的justify-content的类名命名
+$flex-justify: 'is-justify';
+
+// 对于flex交叉轴的类名命名
+$flex-align: 'is-align';
+// 对于是否存在某个条件的类名
+$condition: 'is'
+
+

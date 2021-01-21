@@ -1,0 +1,4 @@
+// 定义一个伪类的使用值的函数
+@function el-content($el-var) {
+  @return unquote("\"#{ $el-var }\"");
+}

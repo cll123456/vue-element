@@ -1,0 +1,132 @@
+@import "mixins/mixins.scss";
+@import "mixins/utils.scss";
+@import "common/var.scss";
+@import "mixins/_button.scss";
+
+@include block(button) {
+  // 使得按钮不能被鼠标选中
+  @include util-no-select(none);
+  @include button-cbcgc($--button-default-color, $--border-color-first, $--button-default-background-color);
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  border: $--button-default-border;
+  border-radius: $--button-default-radius;
+  padding: $--button-default-padding;
+  box-sizing: border-box;
+  font-weight: $--button-default-font-weight;
+  font-size: $--button-default-font-size;
+  margin: 0;
+  display: inline-block;
+  line-height: 1;
+  transition: .1s;
+  // 下一个也是button的话，默认居左10px
+  & + & {
+    margin-left: 10px;
+  }
+  // 如果图标带文字的话
+  i + span {
+    margin-left: 5px;
+  }
+  // 默认按钮的样式
+  @include modifier(default) {
+    &:hover, &:focus {
+      @include button-cbcgc($--button-default-hover-color, $--button-hover-border-color, $--button-default-hover-background-color);
+    }
+
+    &:active {
+      @include button-cbco(mix($--black-color, $--primary-color, 10%), mix($--black-color, $--primary-color, 10%), none);
+    }
+    // 朴素按钮
+    @include when(plain) {
+      background-color: $--white-color;
+
+      &:hover, &:focus {
+        @include button-cbcgc($--primary-color, $--primary-color, $--white-color);
+      }
+
+      &:active {
+        @include button-cbco(mix($--black-color, $--primary-color, 10%), mix($--black-color, $--primary-color, 10%), none);
+      }
+    }
+    // 默认按钮的禁用
+    @include when(disabled) {
+      @include button-disabled($--font-color-space, $--white-color, $--border-color-third);
+
+      &:hover, &:focus, &:active {
+        @include button-disabled($--font-color-space, $--white-color, $--border-color-third);
+      }
+    }
+  }
+
+  $buttonList: (type: primary, color:$--primary-color),
+  (type: info, color:$--info-color),
+  (type: warning, color:$--warning-color),
+  (type: danger, color:$--danger-color),
+  (type: success, color:$--success-color);
+
+  @each $itemMap in $buttonList {
+    @include modifier(map-get($itemMap, type)) {
+      @include button-type(map-get($itemMap, color));
+    }
+  }
+
+  // 文字按钮
+  @include modifier(text) {
+    @include button-cbcgc($--primary-color, transparent, transparent);
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover, &:focus {
+      @include button-cbcgc(mix($--white-color, $--primary-color, 20%), transparent, transparent);
+    }
+
+    &:active {
+      @include button-cbcgc(mix($--black-color, $--primary-color, 10%), transparent, transparent)
+    }
+
+    // 文字按钮的禁用
+    @include when(disabled) {
+      @include button-disabled($--font-color-space, transparent, transparent);
+
+      &:hover, &:focus, &:active {
+        @include button-disabled($--font-color-space, transparent, transparent);
+      }
+    }
+  }
+
+  // 圆角按钮
+  @include when(round) {
+    border-radius: 20px;
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+
+  // 圆形按钮
+  @include when(circle) {
+    border-radius: 50%;
+    padding: 12px;
+  }
+
+  $button-size-list: (medium: (bpd: $--button-medium-padding, bfz: $--button-medium-font-size, bbr: $--button-medium-border-radius)),
+  (small: (bpd: $--button-small-padding, bfz: $--button-small-font-size, bbr: $--button-small-border-radius)),
+  (mini: (bpd: $--button-mini-padding, bfz: $--button-mini-font-size, bbr: $--button-mini-border-radius));
+  // 含有大小的按钮
+  @each $sizeItem in $button-size-list {
+    @each $sizeKey, $sizeValueMap in $sizeItem {
+      @include modifier($sizeKey) {
+        padding: map-get($sizeValueMap, bpd);
+        font-size: map-get($sizeValueMap, bfz);
+        border-radius: map-get($sizeValueMap, bbr);
+
+        // 如果是还有大小的按钮，并且是圆角
+        @include when(round) {
+          padding: map-get($sizeValueMap, bpd);
+        }
+      }
+    }
+  }
+
+}
+
+

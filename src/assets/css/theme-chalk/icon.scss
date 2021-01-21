@@ -1,0 +1,18 @@
+@import "./mixins/mixins.scss";
+
+[class^="el-icon-"], [class*="el-icon-"] {
+  font-family: 'el-fonts';
+  display: inline-block;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// 对于在按钮中使用i标签的图标
+@include block(icon){
+  @include modifier(left){
+    margin-right: 5px;
+  }
+  @include modifier(right){
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,74 @@
+// 关于button的混合
+@import "./../common/var.scss";
+@import "mixins.scss";
+
+
+// 混合button的类型
+@mixin button-type($background-color) {
+  @include button-cbcgc($--white-color, $background-color, $background-color);
+
+  &:hover, &:focus {
+    @include button-cbcgc($--white-color, mix($--white-color, $background-color, 20%), mix($--white-color, $background-color, 20%));
+  }
+
+  &:active {
+    @include button-cbcgc($--white-color, mix($--black-color, $background-color, 10%), mix($--black-color, $background-color, 10%));
+  }
+  // 朴素按钮
+  @include button-plain($background-color);
+
+  // 其他类型的禁用按钮
+  @include when(disabled) {
+    @include button-disabled($--white-color, mix($--white-color, $background-color, 50%), mix($--white-color, $background-color, 50%));
+    &:hover, &:focus, &:active {
+      @include button-disabled($--white-color, mix($--white-color, $background-color, 50%), mix($--white-color, $background-color, 50%));
+    }
+  }
+}
+
+
+// 按钮为朴素按钮
+@mixin button-plain($background-color) {
+  @include when(plain) {
+    @include button-cbcgc($background-color, mix($--white-color, $background-color, 60%), mix($--white-color, $background-color, 90%));
+
+    &:hover, &:focus {
+      @include button-cbcgc($--white-color, $background-color, $background-color);
+    }
+
+    &:active {
+      @include button-cbcgc($--white-color, mix($--black-color, $background-color, 10%), mix($--black-color, $background-color, 10%));
+      outline: none;
+    }
+
+    // 朴素按钮的禁用
+    @include when(disabled) {
+      @include button-disabled(mix($--white-color, $background-color, 40%), mix($--white-color, $background-color, 90%), mix($--white-color, $background-color, 80%));
+
+      &:hover, &:focus, &:active {
+        @include button-disabled(mix($--white-color, $background-color, 40%), mix($--white-color, $background-color, 90%), mix($--white-color, $background-color, 80%));
+      }
+    }
+  }
+}
+
+// 按钮混合函数
+@mixin button-disabled($color, $bg-color, $bcolor) {
+  cursor: not-allowed;
+  background-image: none;
+  @include button-cbcgc($color, $bcolor, $bg-color);
+}
+
+// 按钮的颜色，边框，背景颜色混合
+@mixin button-cbcgc($color, $bc, $bgc) {
+  color: $color;
+  border-color: $bc;
+  background-color: $bgc;
+}
+
+// 按钮 颜色， 边框， 边线
+@mixin button-cbco($c, $bc, $o) {
+  color: $c; //color: #3a8ee6;
+  border-color: $bc; //color: #3a8ee6;
+  outline: $o;
+}

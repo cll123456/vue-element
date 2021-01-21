@@ -1,0 +1,40 @@
+@import "mixins/mixins.scss";
+@import "./common/var.scss";
+
+@include block(button-group) {
+  display: inline-block;
+
+  // 里面button的间隔需要去掉， 这里的el-button 不能使用混合，有问题
+  & > .el-button + .el-button {
+    margin-left: 0;
+  }
+
+  // 每个button-group 里面的间隔时10px
+  & + & {
+    margin-left: 10px;
+  }
+
+  // button-group 里面的button第一个按钮去掉右上角和右下角的圆角，中间的全部去掉,最后一个取相反
+  & > .el-button:first-of-type{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-color:rgba($--white-color, .5);
+  }
+
+  & > .el-button:last-of-type{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color:rgba($--white-color, .5);
+  }
+
+  & > .el-button:not(:first-of-type):not(:last-of-type){
+    border-radius: 0;
+    border-right-color: rgba($--white-color, .5);
+    border-left-color:rgba($--white-color, .5);
+  }
+
+  & > .el-button:not(:last-of-type){
+    margin-right: -1px;
+  }
+}
+

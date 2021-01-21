@@ -1,0 +1,74 @@
+@import "./mixins/mixins.scss";
+@import "./common/var.scss";
+@import "./mixins/utils.scss";
+
+@include block(link) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-size:  $--title-font-size-base;
+  font-weight: $--title-font-weight;
+  @include util-no-select(none);
+
+  @include modifier(default) {
+    color: #606266;
+  }
+  @include modifier(primary) {
+    color: $--primary-color;
+  }
+
+  $linkList: (default: (color:$--font-color-base, hoverColor: $--primary-color)),
+  (primary: (color: $--primary-color, hoverColor: mix($--white-color, $--primary-color, 20%))),
+  (info: (color: $--info-color, hoverColor: mix($--white-color, $--info-color, 20%))),
+  (warning: (color: $--warning-color, hoverColor: mix($--white-color, $--warning-color, 20%))),
+  (danger: (color: $--danger-color, hoverColor: mix($--white-color, $--danger-color, 20%))),
+  (success: (color: $--success-color, hoverColor: mix($--white-color, $--success-color, 20%)));
+  // 每个类型的组件样式
+  @each $linkItem in $linkList {
+    @each $linkKey, $linkRes in $linkItem {
+      @include modifier(#{$linkKey}) {
+        color: map-get($linkRes, color);
+
+        &:hover {
+          color: map-get($linkRes, hoverColor);
+        }
+        // 当hover的时候有下划线
+        @include when(underline) {
+          &:hover::after {
+            @include util-position(0, 0, 0, 0);
+            @if ($linkKey == 'default') {
+              border-bottom: 1px solid map-get($linkRes, hoverColor);
+            } @else {
+              border-bottom: 1px solid map-get($linkRes, color);
+            }
+          }
+        }
+        // 当禁用链接的时候
+        @include when(disabled){
+          cursor: not-allowed;
+          color: mix($--white-color, map-get($linkRes, color), 50%);
+          // 禁用去掉边框
+          &:hover::after{
+            border-bottom-color: transparent;
+          }
+        }
+      }
+    }
+  }
+  // 当后一个元素也是el-link时候，默认间距3px
+  & + &{
+    margin-left: 3px;
+  }
+
+  // 图标要距离文字有一段距离
+  & > i + span {
+    margin-left: 5px;
+  }
+}

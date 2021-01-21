@@ -1,0 +1,47 @@
+@import "./mixins/mixins.scss";
+@import "common/var.scss";
+
+@include block(col){
+    float: left;
+    box-sizing: border-box;
+
+    @for $i from 0 through 24 {
+      &-#{$i}{
+        width: $i / 24 * 100%;
+      }
+
+      &-offset-#{$i}{
+        margin-left: $i / 24 * 100%;
+      }
+
+      &-push-#{$i}{
+        left: $i / 24 * 100%;
+        position: relative;
+      }
+      &-pull-#{$i}{
+        right: $i / 24 * 100%;
+        position: relative;
+      }
+    }
+    // 媒体查询的对象
+    $mediaMap:(xs: $--sm - 1, sm: $--sm, md: $--md, lg: $--lg, xl: $--xl) ;
+    @each $key, $value in $mediaMap{
+      @if($key == 'xs'){
+        @media only screen and (max-width: $value){
+          @for $i from 0 through 24 {
+            &-#{$key}-#{$i}{
+              width: $i / 24 * 100%;
+            }
+          }
+        }
+      }@else{
+        @media only screen and (min-width: $value){
+          @for $i from 0 through 24 {
+            &-#{$key}-#{$i}{
+              width: $i / 24 * 100%;
+            }
+          }
+        }
+      }
+    }
+}

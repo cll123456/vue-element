@@ -1,0 +1,2 @@
+这个项目用于手动练习elementui 的组件
+This is project is order to pricatice compontents of elementui

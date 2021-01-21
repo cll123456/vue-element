@@ -1,0 +1,56 @@
+// 对外暴露的一个图标库
+@import "_icons.scss";
+// 引用对应的图标
+@font-face {
+  font-family: 'el-fonts';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('#{$icon-path}/fa-regular-400.eot');
+  src: url('#{$icon-path}/fa-regular-400.eot?#iefix') format('embedded-opentype'),
+  url('#{$icon-path}/fa-regular-400.woff2') format('woff2'),
+  url('#{$icon-path}/fa-regular-400.woff') format('woff'),
+  url('#{$icon-path}/fa-regular-400.ttf') format('truetype'),
+  url('#{$icon-path}/fa-regular-400.svg#fontawesome') format('svg');
+}
+// 引用对应的图标
+@font-face {
+  font-family: 'el-fonts';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('#{$icon-path}/fa-brands-400.eot');
+  src: url('#{$icon-path}/fa-brands-400.eot?#iefix') format('embedded-opentype'),
+  url('#{$icon-path}/fa-brands-400.woff2') format('woff2'),
+  url('#{$icon-path}/fa-brands-400.woff') format('woff'),
+  url('#{$icon-path}/fa-brands-400.ttf') format('truetype'),
+  url('#{$icon-path}/fa-brands-400.svg#fontawesome') format('svg');
+}
+
+@font-face {
+  font-family: 'el-fonts';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+
+  src: url('#{$icon-path}/fa-solid-900.eot');
+  src: url('#{$icon-path}/fa-solid-900.eot?#iefix') format('embedded-opentype'),
+  url('#{$icon-path}/fa-solid-900.woff2') format('woff2'),
+  url('#{$icon-path}/fa-solid-900.woff') format('woff'),
+  url('#{$icon-path}/fa-solid-900.ttf') format('truetype'),
+  url('#{$icon-path}/fa-solid-900.svg#fontawesome') format('svg');
+}
+
+@font-face {
+  font-family: 'el-fonts';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+
+  //elementui 的图标
+  src: url('#{$icon-path}/element-icons.woff') format('woff'),
+  url('#{$icon-path}/element-icons.ttf') format('truetype');
+}
+//.#{$icon-prefix}{
+//  font-family: 'el-fonts' !important;
+//}

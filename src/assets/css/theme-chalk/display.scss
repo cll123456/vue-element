@@ -1,0 +1,117 @@
+@import "mixins/config.scss";
+@import "common/var.scss";
+
+$break-point-map: (
+        // 当视口在 xs 尺寸时隐藏
+        hidden-xs-only: (max-width: $--sm - 1),
+        // 当视口在 sm 尺寸时隐藏
+        hidden-sm-only: (min-width: $--sm, max-width: $--md - 1),
+         // 当视口在 sm 及以下尺寸时隐藏
+        hidden-sm-and-down: (max-width: $--md - 1),
+        // hidden-sm-and-up - 当视口在 sm 及以上尺寸时隐藏
+        hidden-sm-and-up: (min-width: $--sm),
+        // hidden-md-only - 当视口在 md 尺寸时隐藏
+        hidden-md-only: (min-width: $--md, max-width: $--lg),
+          // hidden-md-and-down - 当视口在 md 及以下尺寸时隐藏
+        hidden-md-and-down: (max-width: $--lg),
+        // hidden-md-and-up - 当视口在 md 及以上尺寸时隐藏
+        hidden-md-and-up: (min-width: $--md),
+         // hidden-lg-only - 当视口在 lg 尺寸时隐藏
+        hidden-lg-only: (min-width: $--lg, max-width: $--xl - 1),
+         // hidden-lg-and-down - 当视口在 lg 及以下尺寸时隐藏
+        hidden-lg-and-down: (max-width: $--xl - 1),
+         // hidden-lg-and-up - 当视口在 lg 及以上尺寸时隐藏
+        hidden-lg-and-up: (min-width: $--xl - 1),
+        // hidden-xl-only - 当视口在 xl 尺寸时隐藏
+        hidden-xl-only: (min-width: $--xl)
+);
+@each $nameKey, $nameValue in $break-point-map{
+    $fullname: '(height: auto)';
+    @each $breakKey, $breakValue in $nameValue{
+        $fullname: $fullname + 'and' + '(#{$breakKey}:#{$breakValue})';
+    }
+    @media only screen and  #{$fullname}{
+        @at-root {
+           .#{$nameKey}{
+               display: none !important;
+           }
+        }
+    }
+}
+
+//// 当视口在 xs 尺寸时隐藏
+//@media only screen and (max-width: $--sm - 1){
+//    .hidden-xs-only{
+//        display: none !important;
+//    }
+//}
+//
+//// 当视口在 sm 尺寸时隐藏
+//@media only screen and (min-width: $--sm) and (max-width: $--md - 1){
+//    .hidden-sm-only{
+//        display: none !important;
+//    }
+//}
+//
+//// 当视口在 sm 及以下尺寸时隐藏
+//@media only screen and (max-width: $--md - 1){
+//    .hidden-sm-and-down{
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-sm-and-up - 当视口在 sm 及以上尺寸时隐藏
+//@media only screen and (min-width: $--sm){
+//    .hidden-sm-and-up{
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-md-only - 当视口在 md 尺寸时隐藏
+//@media only screen and (min-width: $--md) and (max-width: $--lg){
+//    .hidden-md-only{
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-md-and-down - 当视口在 md 及以下尺寸时隐藏
+//@media only screen and (max-width: $--lg){
+//    .hidden-md-and-down{
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-md-and-up - 当视口在 md 及以上尺寸时隐藏
+//@media only screen and (min-width: $--md){
+//    .hidden-md-and-up{
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-lg-only - 当视口在 lg 尺寸时隐藏
+//@media only screen and (min-width: $--lg) and (max-width: $--xl - 1){
+//    .hidden-lg-only {
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-lg-and-down - 当视口在 lg 及以下尺寸时隐藏
+//@media only screen and (max-width: $--xl - 1){
+//    .hidden-lg-and-down{
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-lg-and-up - 当视口在 lg 及以上尺寸时隐藏
+//@media only screen and (min-width: $--xl - 1){
+//    .hidden-lg-and-up{
+//        display: none !important;
+//    }
+//}
+//
+//// hidden-xl-only - 当视口在 xl 尺寸时隐藏
+//@media only screen and (min-width: $--xl){
+//    .hidden-xl-only{
+//        display: none !important;
+//    }
+//}
